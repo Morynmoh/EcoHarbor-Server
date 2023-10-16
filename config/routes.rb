@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get 'pages/signin'
   devise_for :employees
 
+  resources :employees
+
   resources :departments
 
   resources :assets
