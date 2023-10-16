@@ -1,4 +1,4 @@
 class Asset < ApplicationRecord
-  belongs_to :department
-  belongs_to :employee
+  belongs_to :department, optional: true
+  belongs_to :employee, optional: true
 end
