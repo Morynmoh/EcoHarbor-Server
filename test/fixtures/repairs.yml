@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quantity: 1
+  checkin_date: 2023-10-16
+  checkout_date: 2023-10-16
+  repair_comments: MyText
+  asset: one
+  request: one
+  department: one
+  employee: one
+
+two:
+  quantity: 1
+  checkin_date: 2023-10-16
+  checkout_date: 2023-10-16
+  repair_comments: MyText
+  asset: two
+  request: two
+  department: two
+  employee: two

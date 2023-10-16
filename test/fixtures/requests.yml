@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  request_type: MyString
+  new_asset_name: MyString
+  urgency: MyText
+  quantity: 1
+  reason: MyText
+  request_date: 2023-10-16
+  request_status: MyText
+  approval_date: 2023-10-16
+  procurement_comments: MyText
+  asset: one
+  department: one
+  employee: one
+
+two:
+  request_type: MyString
+  new_asset_name: MyString
+  urgency: MyText
+  quantity: 1
+  reason: MyText
+  request_date: 2023-10-16
+  request_status: MyText
+  approval_date: 2023-10-16
+  procurement_comments: MyText
+  asset: two
+  department: two
+  employee: two

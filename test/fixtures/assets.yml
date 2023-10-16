@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  asset_name: MyString
+  asset_category: MyString
+  asset_image: MyText
+  asset_condition: MyString
+  purchase_value: 9.99
+  current_value: 9.99
+  quantity: 1
+  department: one
+  employee: one
+
+two:
+  asset_name: MyString
+  asset_category: MyString
+  asset_image: MyText
+  asset_condition: MyString
+  purchase_value: 9.99
+  current_value: 9.99
+  quantity: 1
+  department: two
+  employee: two
