@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_16_163203) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_17_073745) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "assets", force: :cascade do |t|
+  create_table "assetz", force: :cascade do |t|
     t.string "asset_name"
     t.string "asset_category"
     t.text "asset_image"
@@ -26,8 +26,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_16_163203) do
     t.bigint "employee_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["department_id"], name: "index_assets_on_department_id"
-    t.index ["employee_id"], name: "index_assets_on_employee_id"
+    t.index ["department_id"], name: "index_assetz_on_department_id"
+    t.index ["employee_id"], name: "index_assetz_on_employee_id"
   end
 
   create_table "departments", force: :cascade do |t|
@@ -110,13 +110,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_16_163203) do
     t.index ["employee_id"], name: "index_requests_on_employee_id"
   end
 
-  add_foreign_key "assets", "departments"
-  add_foreign_key "assets", "employees"
-  add_foreign_key "repairs", "assets"
+  add_foreign_key "assetz", "departments"
+  add_foreign_key "assetz", "employees"
+  add_foreign_key "repairs", "assetz", column: "asset_id"
   add_foreign_key "repairs", "departments"
   add_foreign_key "repairs", "employees"
   add_foreign_key "repairs", "requests"
-  add_foreign_key "requests", "assets"
+  add_foreign_key "requests", "assetz", column: "asset_id"
   add_foreign_key "requests", "departments"
   add_foreign_key "requests", "employees"
 end

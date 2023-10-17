@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :departments
 
-  resources :assets, only: [:create]
+  resources :assetz
 
   resources :repairs
 

@@ -1,6 +1,6 @@
-class AssetsController < ApplicationController
+class AssetzController < ApplicationController
 
-  skip_before_action :verify_authenticity_token, only: :create
+  skip_before_action :verify_authenticity_token
 
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
   rescue_from ActiveRecord::RecordNotFound, with: :render_asset_not_found
@@ -34,7 +34,7 @@ class AssetsController < ApplicationController
   private 
 
   def asset_params
-    params.require(:asset).permit(:asset_name, :asset_category, :asset_image, :asset_condition, :purchase_value, :current_value, :quantity, :department_id, :employee_id)
+    params.permit(:asset_name, :asset_category, :asset_image, :asset_condition, :purchase_value, :current_value, :quantity, :department_id, :employee_id)
   end
 
   def find_asset

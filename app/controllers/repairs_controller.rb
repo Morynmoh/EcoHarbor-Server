@@ -33,9 +33,7 @@ class RepairsController < ApplicationController
     def repair_params
         # params.permit!
         # params.permit(:repair_id, :asset_id, :quantity, :checkin_date, :checkout_date, :department_name)
-        params.permit(:asset_id, :quantity, :checkin_date, :checkout_date, :department_id, :repair_comments, :request_id, :employees_id)
-        
-
+        params.permit(:quantity, :checkin_date, :checkout_date, :repair_comments, :asset_id, :request_id, :department_id, :employee_id)
     end
 
     def find_repair
