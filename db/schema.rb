@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_17_073745) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_19_122120) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,17 +59,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_17_073745) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "first_name"
-    t.string "last_name"
-    t.text "employee_role"
-    t.bigint "phone_number"
-    t.date "employment_date"
-    t.text "employee_image"
-    t.bigint "department_id"
+    t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.bigint "phone_number"
+    t.text "employee_role"
+    t.date "employment_date"
+    t.text "employee_image"
+    t.bigint "department_id", null: false
+    t.string "jti", null: false
     t.index ["department_id"], name: "index_employees_on_department_id"
     t.index ["email"], name: "index_employees_on_email", unique: true
+    t.index ["jti"], name: "index_employees_on_jti", unique: true
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
   end
 
@@ -112,6 +115,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_17_073745) do
 
   add_foreign_key "assetz", "departments"
   add_foreign_key "assetz", "employees"
+  add_foreign_key "employees", "departments"
   add_foreign_key "repairs", "assetz", column: "asset_id"
   add_foreign_key "repairs", "departments"
   add_foreign_key "repairs", "employees"

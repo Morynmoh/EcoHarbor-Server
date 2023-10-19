@@ -1,6 +1,7 @@
 class EmployeesController < ApplicationController
       skip_before_action :verify_authenticity_token, only: [:create]
-  before_action :set_employee, only: [:show]
+      before_action :configure_permitted_parameters
+      before_action :set_employee, only: [:show]
 
   def index
     @employees = Employee.all
@@ -23,16 +24,26 @@ class EmployeesController < ApplicationController
     render json: @employee
   end
 
-  private
+
+  def destroy
+    @employee.destroy
+  end
+
+
+# protected
+#       def configure_permitted_parameters
+#         devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :first_name, :last_name, :employee_role, :phone_number, :employment_date, :department_id])
+#       end
+#   private
 
   def set_employee
     @employee = Employee.find(params[:id])
   end
 
-  def employee_params
-    params.require(:employee).permit(
-      :first_name, :last_name, :email, :phone_number,
-      :password, :employment_date, :department_id, :employee_role, :employee_image
-    )
-  end
+  # def employee_params
+  #   params.require(:employee).permit(
+  #     :first_name, :last_name, :email, :phone_number,
+  #     :password, :employment_date, :department_id, :employee_role, :employee_image
+  #   )
+  # end
 end
