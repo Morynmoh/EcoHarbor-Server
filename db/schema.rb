@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_19_122120) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_19_180327) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,8 +22,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_19_122120) do
     t.decimal "purchase_value"
     t.decimal "current_value"
     t.integer "quantity"
-    t.bigint "department_id", null: false
-    t.bigint "employee_id", null: false
+    t.bigint "department_id"
+    t.bigint "employee_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["department_id"], name: "index_assetz_on_department_id"

@@ -1,6 +1,6 @@
 class EmployeesController < ApplicationController
       skip_before_action :verify_authenticity_token, only: [:create]
-      before_action :configure_permitted_parameters
+      # before_action :configure_permitted_parameters
       before_action :set_employee, only: [:show]
 
   def index
