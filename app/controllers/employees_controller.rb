@@ -1,4 +1,5 @@
 class EmployeesController < ApplicationController
+  respond_to :json
       skip_before_action :verify_authenticity_token, only: [:create]
       before_action :authenticate_employee!
       # before_action :configure_permitted_parameters
@@ -9,7 +10,10 @@ class EmployeesController < ApplicationController
     render json: @employees
   end
 
-  # POST /employees
+  # POST /employeesemployee: {
+  #       email: email,
+  #       password: password,
+  #     }
   # def create
   #   @employee = Employee.new(employee_params)
   #
@@ -29,10 +33,15 @@ class EmployeesController < ApplicationController
   def update
     @employee = Employee.find(params[:id])
     remove_blank_fields
-    if @employee.update(employee_params)
-      render json: @employee
+    if resource.persisted?
+      render json: {
+        status: { code: 200, message: "Updated successfully!" },
+        data: EmployeeSerializer.new(@employee).serializable_hash[:data][:attributes]
+      }
     else
-      render json: @employee.errors, status: :unprocessable_entity
+      render json: {
+        status: { code: 401, message: "Updated failed!" },
+      }
     end
   end
   # DELETE /employees/:id
