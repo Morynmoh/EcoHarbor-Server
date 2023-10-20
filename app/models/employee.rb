@@ -8,7 +8,7 @@ class Employee < ApplicationRecord
          :recoverable, :rememberable, :validatable, :api, :jwt_authenticatable, jwt_revocation_strategy: self
 
   belongs_to :department, class_name: 'Department', foreign_key: 'department_id'
-  enum role: { employee: 0, procurement_manger: 1, finance_manager: 2, it_manager: 3 }
+  enum role: { employee: 0, procurement_manager: 1, finance_manager: 2, admin: 3 }
   def set_default_role
     self.employee_role ||= :employee
   end

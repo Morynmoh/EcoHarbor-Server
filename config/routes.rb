@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'pages/signin'
+  get 'signin', to: 'pages#signin'
   devise_for :employees, path: '', path_names: { sign_in: 'signin', sign_out: 'signout', registration: 'signup'}, controllers: {
     sessions: 'employees/sessions', registrations: 'employees/registrations' }
 
