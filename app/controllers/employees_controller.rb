@@ -1,11 +1,12 @@
 class EmployeesController < ApplicationController
   respond_to :json
-      skip_before_action :verify_authenticity_token, only: [:create]
-      before_action :authenticate_employee!
+      skip_before_action :verify_authenticity_token
+      # before_action :authenticate_employee!
       # before_action :configure_permitted_parameters
-      before_action :set_employee, only: [:show]
-
+      before_action :set_employee, only: [:show, :index, :update, :destroy]
+      before_action :authenticate_devise_api_token!, only: [:restricted]
   def index
+    devise_api_token = current_devise_api_token
     @employees = Employee.all
     render json: @employees
   end
@@ -26,11 +27,13 @@ class EmployeesController < ApplicationController
   #
   # # GET /employees/:id
   def show
+    @employee = Employee.all
     render json: @employee
   end
 
   # PATCH/PUT /employees/:id
   def update
+    devise_api_token = current_devise_api_token
     @employee = Employee.find(params[:id])
     remove_blank_fields
     if resource.persisted?
@@ -59,7 +62,7 @@ class EmployeesController < ApplicationController
   private
 
   def set_employee
-    @employee = Employee.find(params[:id])
+    @employee = Employee.all
   end
 
   def employee_params

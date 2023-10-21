@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:postgresql://localhost:5432/ecoharbor_server_development</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="ecoharbor_server_development" uuid="32f6a397-26fc-4a16-a30a-357d5674ef21">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/ecoharbor_server_development</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
